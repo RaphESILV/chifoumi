@@ -1,3 +1,5 @@
+/* color grey : #d4d3dC, marron: #AD956B, Bleuf: 384454, bleu: #317AC1, jaune: #EA1624 */
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -5,7 +7,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #000000;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,11 +31,18 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #d4d3dC;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+h4{
+  font-size: 1.5em;
+  line-height: 1.1;
+  margin-bottom: 10px;
 }
 
 button {
@@ -65,5 +74,17 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+  .box{
+    background-color: #AD956B;
+    width: 300px;
+    height: 450px;
+    box-shadow: #1a1a1a 10px 10px 50px 5px;
+    border-radius: 10px;
+
+  }
+  .goal{
+    margin-top: 200px;
+    color: red;
   }
 }
