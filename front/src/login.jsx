@@ -5,13 +5,10 @@ import CustomButton from './components/CustomButton.jsx';
 import Eye from './svg/eye.svg';
 import closedEye from './svg/closed-eye.svg';
 
-
-// Importez la bibliothèque FontAwesome (ou une autre bibliothèque d'icônes) si ce n'est pas déjà fait.
-
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // État pour afficher/masquer le mot de passe
+  const [showPassword, setShowPassword] = useState(false); 
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
@@ -21,8 +18,14 @@ function Login() {
     setPassword(e.target.value);
   }
 
-  const togglePasswordVisibility = () => {
+  function handleClick() {
+   
     setShowPassword(!showPassword);
+
+   
+    setTimeout(() => {
+      setShowPassword(false);
+    }, 3000);
   }
 
   const handleSubmit = (e) => {
@@ -31,18 +34,7 @@ function Login() {
       username: username,
       password: password
     }
-    fetch('http://localhost:3000/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data),
-      credentials: 'include'
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-      })
+   
   }
 
   return (
@@ -66,7 +58,7 @@ function Login() {
             value={password}
             onChange={handlePassword}
           />
-          <span className="text-none" onClick={togglePasswordVisibility} style={{ cursor: 'pointer' }}>
+          <span className="text-none" onClick={handleClick} style={{ cursor: 'pointer' }}>
             {showPassword ? (
               <img src={closedEye} alt="Hide Icon" width={25} />
             ) : (
@@ -75,7 +67,6 @@ function Login() {
           </span>
         </div>
         <CustomButton className="text-none" type="submit" >Login</CustomButton>
-
       </form>
     </div>
   );
