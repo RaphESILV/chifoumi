@@ -36,7 +36,7 @@ h2 {
   color: #000000;
 }
 
-h4{
+label{
   margin-top: auto;
   font-size: 1.5em;
   line-height: 1.1;
@@ -53,6 +53,16 @@ button:hover {
   }
   button {
     user-select: none;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column; 
+  }
+  
+  .button-container button {
+    margin-right: 10px; 
+    margin-top: 30px; 
   }
 
   .text-none {
@@ -110,6 +120,7 @@ button:hover {
   position: absolute;
   right: 10px;
 }
+
 
 
 
