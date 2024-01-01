@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CustomButton from './components/CustomButton.jsx';
 import Eye from './svg/eye.svg';
 import closedEye from './svg/closed-eye.svg';
-import './login.jsx';
+
 
 
 function Register() {
@@ -35,11 +35,9 @@ function Register() {
     // Code pour la soumission du formulaire
   }
 
-
-
   return (
-    <div>
-      <link to="/Register" />
+    <div className="Login box">
+      <h2 className="text-none">{'Register'}</h2>
       <form onSubmit={handleRegister}>
         <div className='text-none'>
           <label>Username</label>
@@ -63,8 +61,6 @@ function Register() {
           </div>
         </div>
         <div className="button-container">
-          <from onSubmit={handleRegister}></from>
-          <link to="/login"></link>
           <CustomButton type="submit">Create </CustomButton>
         </div>
       </form>

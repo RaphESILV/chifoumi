@@ -4,6 +4,8 @@ import CustomButton from './components/CustomButton.jsx';
 import Eye from './svg/eye.svg';
 import closedEye from './svg/closed-eye.svg';
 import { Link } from 'react-router-dom';
+import './App.jsx'; 
+
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -68,7 +70,9 @@ function Login() {
           <CustomButton className="text-none" type="submit">Login</CustomButton>
         </div>
         <div className='button-container'>
-            <CustomButton className='text-none' type='submit'>Register</CustomButton>
+          <Link to="/register">
+            <CustomButton>Register</CustomButton>
+          </Link>
         </div>
       </form>
     </div>
