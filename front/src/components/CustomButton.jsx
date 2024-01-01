@@ -1,6 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function CustomButton(props) {
+function CustomButton({ to, onClick, children, ...props }) {
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    if (onClick) {
+      onClick(e);
+    }
+    if (to) {
+      navigate(to);
+    }
+  };
+
   const buttonStyle = {
     background: 'rgb(34,193,195)',
     background: 'linear-gradient(135deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%)',
@@ -18,10 +30,12 @@ function CustomButton(props) {
   return (
     <button
       style={buttonStyle}
-      onClick={props.onClick}
+      onClick={handleClick}
+      {...props}
     >
-      {props.children}
+      {children}
     </button>
   );
 }
+
 export default CustomButton;

@@ -3,7 +3,6 @@ import './login.css';
 import CustomButton from './components/CustomButton.jsx';
 import Eye from './svg/eye.svg';
 import closedEye from './svg/closed-eye.svg';
-import { Link } from 'react-router-dom';
 import './App.jsx'; 
 
 
@@ -37,7 +36,7 @@ function Login() {
   }
 
   return (
-    <div className="Login box">
+    <div className="Login block" >
       <h2 className="text-none">{'Sign in'}</h2>
       <form onSubmit={handleSubmit}>
         <label className="text-none">Username</label>
@@ -67,12 +66,10 @@ function Login() {
           </span>
         </div>
         <div className="button-container">
-          <CustomButton className="text-none" type="submit">Login</CustomButton>
+          <CustomButton to ="/Menu" className="text-none" type="submit">Login</CustomButton>
         </div>
         <div className='button-container'>
-          <Link to="/register">
-            <CustomButton>Register</CustomButton>
-          </Link>
+            <CustomButton to ="/Register">Register</CustomButton>
         </div>
       </form>
     </div>

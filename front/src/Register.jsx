@@ -36,7 +36,7 @@ function Register() {
   }
 
   return (
-    <div className="Login box">
+    <div className="Login block">
       <h2 className="text-none">{'Register'}</h2>
       <form onSubmit={handleRegister}>
         <div className='text-none'>
