@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import CustomButton from './components/CustomButton';
+import CustomButton from './components/CustomButton.jsx';
 import Eye from './svg/eye.svg';
 import closedEye from './svg/closed-eye.svg';
 import './login.jsx';
 
-function CreateAccount() {
+
+function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
@@ -24,31 +26,21 @@ function CreateAccount() {
     }, 3000);
   }
 
-  const handleCreateAccount = async (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
-
-    try {
-      const response = await fetch('http://localhost:3000/create-account', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      if (response.ok) {
-        alert('Compte créé avec succès.');
-      } else {
-        alert('La création de compte a échoué.');
-      }
-    } catch (error) {
-      console.error('Erreur lors de la création de compte :', error);
+    const data = {
+      username: username,
+      password: password
     }
+    // Code pour la soumission du formulaire
   }
+
+
 
   return (
     <div>
-      <form onSubmit={handleCreateAccount}>
+      <link to="/Register" />
+      <form onSubmit={handleRegister}>
         <div className='text-none'>
           <label>Username</label>
           <input type="text" value={username} onChange={handleUsername} />
@@ -71,6 +63,8 @@ function CreateAccount() {
           </div>
         </div>
         <div className="button-container">
+          <from onSubmit={handleRegister}></from>
+          <link to="/login"></link>
           <CustomButton type="submit">Create </CustomButton>
         </div>
       </form>
@@ -78,4 +72,4 @@ function CreateAccount() {
   );
 }
 
-export default CreateAccount;
+export default Register;

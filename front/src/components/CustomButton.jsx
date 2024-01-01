@@ -24,5 +24,4 @@ function CustomButton(props) {
     </button>
   );
 }
-
 export default CustomButton;
