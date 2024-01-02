@@ -28,11 +28,33 @@ function Register() {
 
   const handleRegister = (e) => {
     e.preventDefault();
+
     const data = {
       username: username,
       password: password
-    }
-    // Code pour la soumission du formulaire
+    };
+
+    fetch('http://localhost:5173/Register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('La réponse du réseau n\'est pas correcte');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Gérez ici l'inscription réussie
+      console.log('Succès:', data);
+    })
+    .catch((error) => {
+      // Gérez ici les erreurs
+      console.error('Erreur:', error);
+    });
   }
 
   return (
@@ -61,7 +83,7 @@ function Register() {
           </div>
         </div>
         <div className="button-container">
-          <CustomButton type="submit">Create </CustomButton>
+          <CustomButton to="/" type="submit">Create </CustomButton>
         </div>
       </form>
     </div>
