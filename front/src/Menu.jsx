@@ -21,6 +21,7 @@ const Menu = () => {
     <div className=" block" >
       <h3 className="text-none">{'Menu'}</h3>
       <CustomButtonMenu to="/FindGame"className="text-none">{'Play'}</CustomButtonMenu>
+      <CustomButtonMenu to="/FindGameOnline" className="text-none">{'Play Online'}</CustomButtonMenu>
       <CustomButtonMenu to="/history" className="text-none">{'Game History'}</CustomButtonMenu>
       <CustomButtonMenu to="/" className="text-none" onClick={handleLogout}>{'Log out'}</CustomButtonMenu>
     </div>

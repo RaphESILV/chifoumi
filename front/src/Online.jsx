@@ -98,7 +98,7 @@ function Game({ addGame }) {
     useEffect(() => {
         if (playerScore === 3 || computerScore === 3) {
             setIsGameActive(false);
-            setResult(playerScore === 3 ? player1 + ' wins the game!' : 'Computer wins the game!');
+            setResult(playerScore === 3 ? 'Player wins the game!' : 'Computer wins the game!');
             setShowAlert(true);
             saveEndGameData(); // Save end game data when game is not active
         }

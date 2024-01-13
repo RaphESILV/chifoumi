@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CustomButtonMenu from './components/CustomButtonMenu';
 
-const History = () => {
-    const [games, setGames] = useState([]);
+const History = ({ games, addGame }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const gamesPerPage = 6;
 
-    const addGame = (player_1, player_2, score, time, winner) => {
-        setGames(prevGames => [...prevGames, { player_1, player_2, score, time, winner }]);
-    };
-
+    //useeffect qui recupere les valeur en fin de partie et les sauvegarde pour history.jsx
     useEffect(() => {
-        addGame('Player 1', 'Player 2', '1-0', '10 min', 'Player 1');
-        // Add more games here for testing
+        const username = localStorage.getItem('username');
+        const score = localStorage.getItem('score');
+        const time = localStorage.getItem('time');
+        const winner = localStorage.getItem('winner');
+        const player_1 = localStorage.getItem('player_1');
+        const player_2 = localStorage.getItem('player_2');
+        addGame(player_1, player_2, score, time, winner);
     }, []);
 
     // Get current games
