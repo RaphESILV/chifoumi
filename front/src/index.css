@@ -76,6 +76,39 @@ button:hover {
     user-select: none;
   }
 
+  .alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 100%;
+    user-select: none;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 2em;
+}
+.alert-background {
+  position: fixed;
+  overflow: hidden;
+  border: 2px solid black;
+  border-radius: 20px;
+  background: linear-gradient(rgba(26, 17, 7, 0.5), rgba(63, 37, 8, 0.3)), url("jpg/wood.jpg");
+  box-shadow: 10px 10px 50px 5px #000000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 200px;
+  z-index: 9998; 
+}
+
+
   .block {
     background-color: rgb(255, 255, 255);
     width: 300px;
@@ -85,6 +118,144 @@ button:hover {
     padding: 20px;
   }
 
+  .img-small {
+    width: 50px;
+    height: 50px;
+  }
+
+.score {
+  border: 1px solid black;
+  border-radius: 10px;
+  background: linear-gradient(rgba(26, 17, 7, 0.5), rgba(63, 37, 8, 0.3)), url("jpg/wood.jpg");
+  margin: 20px auto; 
+  align-items: center;
+  justify-content: center;
+  display: table; 
+}
+.score table {
+  margin: 0;
+  border-collapse: separate;
+  align-items: center;
+  justify-content: center;
+}
+
+.score th:first-child, .score td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.score th:last-child, .score td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.score th {
+  margin-top:1px;
+}
+
+.score td {
+  border: 1px solid black; 
+  padding: 10px; 
+  font-size: 12px;
+  font-family: Impact, sans-serif; /* Change la police à Impact */
+  color: black; /* Change la couleur du texte à noir */
+}
+
+.score h2 {
+  margin-bottom: 10px; 
+}
+
+.score p {
+  margin: 0; 
+  padding: 5px; 
+}
+  .fondGame {
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .blockGame {
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    box-shadow: 10px 10px 50px 5px #000000;
+    border-radius: 30px;
+    padding: 20px;
+  }
+
+  .blockHistory {
+    background-color: rgb(255, 255, 255);
+    width: 700px;
+    height: 750px;
+    box-shadow: 10px 10px 50px 5px #000000;
+    border-radius: 30px;
+    padding: 20px;
+  }
+
+  .blockFind {
+    background-color: rgb(255, 255, 255);
+    width: 500px;
+    height: 250px;
+    box-shadow: 10px 10px 50px 5px #000000;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    user-select: none;
+  }
+
+  .player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.playerIcon {
+    width: 80px;  /* Change this to make the icon smaller or larger */
+}
+
+.loadingIcon {
+    width: 60px;  /* Change this to make the icon smaller or larger */
+}
+
+  table{
+    /* border-collapse: collapse; */
+    width: 100%;
+
+    font-family: monospace;
+    font-size: 25px;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .gameTable {
+    width: 100%;
+    border-spacing: 0;
+    border: 1px solid black; /* Ajoute une bordure au tableau */
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+  }
+  
+  .gameTable th:not(:first-child), .gameTable td:not(:first-child) {
+    border-left: 1px solid black; /* Ajoute une bordure gauche aux cellules du tableau, sauf la première */
+    padding: 10px;
+    background-color: transparent;
+    text-align: center;
+  }
 
  input{
   border-radius: 50px;
@@ -117,11 +288,27 @@ button:hover {
   border: 1px solid #000;
   padding: 10px;
   border-radius: 4px;
-  background-image: url('chemin/vers/eye.svg');
   background-position: right center;
   background-repeat: no-repeat;
   padding-right: 40px;
   user-select: none;
+}
+.MyCard {
+  position: absolute;
+  bottom: 0;
+  right: 50px; 
+  margin: 10px;
+  margin-bottom: 40px;
+}
+
+.TCard {
+  position: absolute;
+  top: 42%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .password-input span {
@@ -129,6 +316,34 @@ button:hover {
   right: 10px;
 }
 
+.card {
+  perspective: 1000px;
+  margin: 20px;
+  cursor: pointer;
+}
 
+.card .front, .card .back {
+  width: 100px;
+  height: 150px;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 3px;
+  transition: transform 0.6s linear;
+}
 
+.card .front {
+  transform: rotateY(0deg);
+}
+
+.card .back {
+  transform: rotateY(180deg);
+}
+
+.card.flipped .front {
+  transform: rotateY(-180deg);
+}
+
+.card.flipped .back {
+  transform: rotateY(0deg);
+}
 

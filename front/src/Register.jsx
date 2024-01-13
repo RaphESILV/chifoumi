@@ -2,60 +2,55 @@ import React, { useState } from 'react';
 import CustomButton from './components/CustomButton.jsx';
 import Eye from './svg/eye.svg';
 import closedEye from './svg/closed-eye.svg';
+import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 
-
+const API_URL = 'http://fauques.freeboxos.fr:3000'; 
 
 function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
+const handleUsername = (e) => {
+  setUsername(e.target.value);
+}
 
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
-  }
+const handlePassword = (e) => {
+  setPassword(e.target.value);
+}
 
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  }
+function handleClick() {
+  setShowPassword(!showPassword);
+  setTimeout(() => {
+    setShowPassword(false);
+  }, 3000);
+}
 
-  function handleClick() {
-    setShowPassword(!showPassword);
-    setTimeout(() => {
-      setShowPassword(false);
-    }, 3000);
-  }
+const handleRegister = async (e) => {
+  e.preventDefault();
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-
-    const data = {
-      username: username,
-      password: password
-    };
-
-    fetch('http://localhost:5173/Register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('La réponse du réseau n\'est pas correcte');
+  const idUser = uuidv4();
+  try {
+    const response = await axios.post(`${API_URL}/register`, { id_: idUser, username, password });
+    console.log('API response:', response);
+    if (response.status === 201) {
+      console.log('Succès:', response.data);
+      {
+        alert('Compte créé');
       }
-      return response.json();
-    })
-    .then(data => {
-      // Gérez ici l'inscription réussie
-      console.log('Succès:', data);
-    })
-    .catch((error) => {
-      // Gérez ici les erreurs
-      console.error('Erreur:', error);
-    });
+    } else {
+      throw new Error('Registration failed');
+    }
+  } catch (error) {
+    console.error('Registration error:', error);
+    if (error.response && error.response.status === 409) {
+      alert('Erreur d\'inscription: Un utilisateur avec ce nom d\'utilisateur existe déjà.');
+    } else {
+      alert('Erreur d\'inscription: ' + error.message);
+    }
   }
+}
 
   return (
     <div className="Login block">
@@ -83,7 +78,7 @@ function Register() {
           </div>
         </div>
         <div className="button-container">
-          <CustomButton to="/" type="submit">Create </CustomButton>
+          <CustomButton to="/" type="submit" onClick={handleRegister}>Create </CustomButton>
         </div>
       </form>
     </div>
